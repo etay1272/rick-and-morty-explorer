@@ -266,6 +266,8 @@
 .character-card {
   min-width: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 1rem;
@@ -279,8 +281,49 @@
 
 .character-card-link {
   display: block;
-  height: 100%;
+  flex: 1;
   text-decoration: none;
+}
+
+.character-grid > li {
+  min-width: 0;
+}
+
+.favorite-toggle-button {
+  min-height: 2.6rem;
+  padding: 0.55rem 0.8rem;
+  color: var(--muted);
+  background: #10191e;
+  border: 0;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-align: left;
+  transition: color 140ms ease, background-color 140ms ease;
+}
+
+.favorite-toggle-button:hover {
+  color: var(--text);
+  background: #172329;
+}
+
+.favorite-toggle-button.is-favorite {
+  color: var(--mint);
+}
+
+.favorite-toggle-button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--mint);
+  outline-offset: -3px;
+}
+
+.details-favorite-button {
+  margin: -0.8rem 0 1.8rem;
+  padding-inline: 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
 }
 
 .character-image {

@@ -4,10 +4,12 @@ import { ApiRequestError, getCharacterById, getEpisodesByIds } from './api/rickA
 import type { Character, Episode } from './types.ts'
 import { formatEpisodeCode } from './utils/episodes.ts'
 import { parseCharacterId } from './routes.ts'
+import { useFavorites } from './FavoritesContext.ts'
 
 function CharacterDetailsPage() {
   const { id } = useParams<{ id: string }>()
   const characterId = parseCharacterId(id)
+  const { isFavorite, toggleFavorite } = useFavorites()
   const [character, setCharacter] = useState<Character | null>(null)
   const [episodes, setEpisodes] = useState<Episode[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -117,6 +119,14 @@ function CharacterDetailsPage() {
           <p className="character-profile-summary">
             {character.species}{character.type ? ` · ${character.type}` : ''}
           </p>
+          <button
+            className={`favorite-toggle-button details-favorite-button${isFavorite(character.id) ? ' is-favorite' : ''}`}
+            type="button"
+            aria-pressed={isFavorite(character.id)}
+            onClick={() => toggleFavorite(character)}
+          >
+            {isFavorite(character.id) ? '★ Remove from favorites' : '☆ Add to favorites'}
+          </button>
           <dl className="character-facts">
             <div>
               <dt>Status</dt>

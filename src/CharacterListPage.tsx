@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { ApiRequestError, getCharacterPage } from './api/rickAndMortyApi.ts'
+import CharacterCard from './CharacterCard.tsx'
 import type { Character, CharacterStatus } from './types.ts'
 
 type StatusFilter = CharacterStatus | 'All'
@@ -149,19 +149,7 @@ function CharacterListPage() {
         <>
           <ul className="character-grid" aria-label="Character results">
             {characters.map((character) => (
-              <li className="character-card" key={character.id}>
-                <Link className="character-card-link" to={`/characters/${character.id}`}>
-                  <img className="character-image" src={character.image} alt="" loading="lazy" />
-                  <div className="character-card-content">
-                    <span className={`status-indicator status-${character.status.toLowerCase()}`}>
-                      <span aria-hidden="true" />
-                      {character.status}
-                    </span>
-                    <h2>{character.name}</h2>
-                    <p>{character.gender}</p>
-                  </div>
-                </Link>
-              </li>
+              <li key={character.id}><CharacterCard character={character} /></li>
             ))}
           </ul>
 
