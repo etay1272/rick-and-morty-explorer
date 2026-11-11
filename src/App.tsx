@@ -1,9 +1,10 @@
-import { Link, NavLink, Navigate, Route, Routes } from 'react-router-dom'
+import { Link, Navigate, Route, Routes } from 'react-router-dom'
 import CharacterListPage from './CharacterListPage.tsx'
 import CharacterDetailsPage from './CharacterDetailsPage.tsx'
 import FavoritesPage from './FavoritesPage.tsx'
 import EpisodesPage from './EpisodesPage.tsx'
 import { FavoritesProvider } from './FavoritesProvider.tsx'
+import SiteHeader from './SiteHeader.tsx'
 import './App.css'
 
 function CharactersPage() {
@@ -27,27 +28,7 @@ function App() {
   return (
     <FavoritesProvider>
       <div className="app-shell">
-        <header className="site-header">
-          <Link className="brand" to="/characters" aria-label="Rick and Morty Explorer home">
-            <span className="brand-orbit" aria-hidden="true" />
-            <span>
-              <span className="brand-kicker">Interdimensional field guide</span>
-              <span className="brand-name">Rick &amp; Morty Explorer</span>
-            </span>
-          </Link>
-
-          <nav className="primary-nav" aria-label="Main navigation">
-            <NavLink className="primary-nav-link" to="/characters">
-              Characters
-            </NavLink>
-            <NavLink className="primary-nav-link" to="/favorites">
-              Favorites
-            </NavLink>
-            <NavLink className="primary-nav-link" to="/episodes">
-              Episodes
-            </NavLink>
-          </nav>
-        </header>
+        <SiteHeader />
 
         <main className="app-main" id="main-content" tabIndex={-1}>
           <Routes>

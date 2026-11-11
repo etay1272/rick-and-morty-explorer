@@ -43,11 +43,12 @@ Vite יציג בטרמינל את הכתובת המקומית של האפליק�
 
 ```bash
 npm test
+npm run test:ui
 npm run lint
 npm run build
 ```
 
-`npm test` מריץ את בדיקות Vitest. `npm run lint` בודק את הקוד, ו־`npm run build` מריץ בדיקת TypeScript ויוצר build לייצור.
+`npm test` מריץ את בדיקות Vitest פעם אחת בטרמינל. `npm run test:ui` פותח את ממשק Vitest האינטראקטיבי בדפדפן; הכתובת תופיע בטרמינל, ויש להשאיר את התהליך פועל בזמן העיון. `npm run lint` בודק את הקוד, ו־`npm run build` מריץ בדיקת TypeScript ויוצר build לייצור.
 
 ## תיעוד תהליך העבודה
 
