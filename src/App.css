@@ -160,6 +160,208 @@
   outline-offset: 4px;
 }
 
+.character-directory {
+  width: 100%;
+}
+
+.directory-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.directory-heading .page-description {
+  margin-top: 0.85rem;
+}
+
+.result-count {
+  flex: 0 0 auto;
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.directory-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.38fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.field-label {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.field-label input,
+.field-label select {
+  width: 100%;
+  min-height: 2.85rem;
+  padding: 0.7rem 0.85rem;
+  color: var(--text);
+  background: #0c1419;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+}
+
+.field-label input::placeholder {
+  color: #73848b;
+}
+
+.field-label input:focus-visible,
+.field-label select:focus-visible,
+.secondary-button:focus-visible,
+.character-card-link:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+.directory-message {
+  min-height: 12rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.directory-message h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.15rem;
+}
+
+.directory-message p {
+  margin: 0.6rem 0 0;
+  line-height: 1.6;
+}
+
+.error-message {
+  border-color: rgba(255, 137, 137, 0.3);
+}
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.character-card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.character-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--mint-line);
+}
+
+.character-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.2;
+  object-fit: cover;
+  background: #1b282e;
+}
+
+.character-card-content {
+  padding: 0.9rem 1rem 1rem;
+}
+
+.character-card-content h2 {
+  overflow: hidden;
+  margin: 0.55rem 0 0.2rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.character-card-content p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.status-indicator > span {
+  width: 0.48rem;
+  aspect-ratio: 1;
+  background: #a4afb3;
+  border-radius: 50%;
+}
+
+.status-alive > span {
+  background: #76e7bd;
+}
+
+.status-dead > span {
+  background: #ff8585;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.secondary-button {
+  min-height: 2.5rem;
+  padding: 0.55rem 0.9rem;
+  color: var(--text);
+  background: #172329;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  cursor: pointer;
+}
+
+.secondary-button:hover:not(:disabled) {
+  border-color: var(--mint-line);
+}
+
+.secondary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .site-footer {
   width: min(100% - 2rem, 1180px);
   margin-inline: auto;
@@ -204,6 +406,36 @@
   .page-panel {
     min-height: 15rem;
     border-radius: 1.1rem;
+  }
+
+  .directory-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .directory-controls {
+    grid-template-columns: 1fr;
+    padding: 0.8rem;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .character-card-content {
+    padding: 0.7rem;
+  }
+
+  .pagination {
+    gap: 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .pagination .secondary-button {
+    padding-inline: 0.65rem;
   }
 
   .site-footer {

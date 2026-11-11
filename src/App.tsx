@@ -1,15 +1,10 @@
 import { Link, NavLink, Navigate, Route, Routes, useParams } from 'react-router-dom'
+import CharacterListPage from './CharacterListPage.tsx'
 import { parseCharacterId } from './routes.ts'
 import './App.css'
 
 function CharactersPage() {
-  return (
-    <PagePlaceholder
-      eyebrow="Character directory"
-      title="Characters"
-      description="Search and explore the people and creatures of the multiverse."
-    />
-  )
+  return <CharacterListPage />
 }
 
 function CharacterDetailsPage() {
