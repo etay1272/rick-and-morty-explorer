@@ -2,21 +2,12 @@ import { Link, NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import CharacterListPage from './CharacterListPage.tsx'
 import CharacterDetailsPage from './CharacterDetailsPage.tsx'
 import FavoritesPage from './FavoritesPage.tsx'
+import EpisodesPage from './EpisodesPage.tsx'
 import { FavoritesProvider } from './FavoritesProvider.tsx'
 import './App.css'
 
 function CharactersPage() {
   return <CharacterListPage />
-}
-
-function EpisodesPage() {
-  return (
-    <PagePlaceholder
-      eyebrow="Episode guide"
-      title="Episodes"
-      description="Browse the episodes and find out who appeared in them."
-    />
-  )
 }
 
 function NotFoundPage() {
@@ -28,22 +19,6 @@ function NotFoundPage() {
       <Link className="return-link" to="/characters">
         Return to characters
       </Link>
-    </section>
-  )
-}
-
-interface PagePlaceholderProps {
-  eyebrow: string
-  title: string
-  description: string
-}
-
-function PagePlaceholder({ eyebrow, title, description }: PagePlaceholderProps) {
-  return (
-    <section className="page-panel">
-      <p className="page-eyebrow">{eyebrow}</p>
-      <h1 className="page-title">{title}</h1>
-      <p className="page-description">{description}</p>
     </section>
   )
 }
