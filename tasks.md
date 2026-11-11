@@ -6,6 +6,7 @@
 
 - [x] להוסיף React Router ו־Vitest לפרויקט.
 - [x] להגדיר `npm test` וסביבת בדיקות שעובדת עם TypeScript.
+- [x] להוסיף Vitest UI ואת `npm run test:ui` להרצת הבדיקות בדפדפן.
 - [x] להוסיף שלד ראשוני לנתיבים שהוגדרו ב־`PRD.md`.
 
 **קבלה:** `npm run dev` מפעיל את האפליקציה; `npm run build` ו־`npm test` פועלים; לכל נתיב יש רכיב עמוד מתאים.
