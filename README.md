@@ -1,75 +1,56 @@
-# React + TypeScript + Vite
+# Rick & Morty Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+אפליקציית Front-end לחיפוש דמויות ופרקים מתוך Rick and Morty. אפשר לפתוח עמוד פרטים לכל דמות, לשמור דמויות מועדפות ולחזור אליהן גם אחרי רענון הדפדפן.
 
-Currently, two official plugins are available:
+## יכולות
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- חיפוש דמויות לפי שם, סינון לפי סטטוס ודפדוף בתוצאות.
+- עמוד פרטי דמות עם נתונים על הדמות ורשימת הפרקים שבהם הופיעה.
+- שמירה והסרה של מועדפים מתוך כרטיס דמות או עמוד הפרטים; הנתונים נשמרים ב־`localStorage`.
+- חיפוש פרקים לפי שם ודפדוף בתוצאות.
+- מצבי טעינה, שגיאה ותוצאות ריקות, יחד עם פריסה רספונסיבית.
 
-## React Compiler
+## עמודים וכתובות
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| כתובת | מה מוצג |
+| --- | --- |
+| `/` | מעבר אוטומטי לרשימת הדמויות |
+| `/characters` | רשימת דמויות, חיפוש, סינון ודפדוף |
+| `/characters/:id` | פרטי דמות והופעות בפרקים |
+| `/favorites` | הדמויות שנשמרו כמועדפות |
+| `/episodes` | רשימת פרקים, חיפוש ודפדוף |
 
-## Expanding the ESLint configuration
+## טכנולוגיות ומידע
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React, TypeScript ו־Vite.
+- React Router לניהול העמודים והכתובות.
+- Vitest לבדיקות.
+- המידע מגיע מ־[Rick and Morty API](https://rickandmortyapi.com/api). ה־API ציבורי ואינו דורש מפתח.
+- הפרויקט רץ בדפדפן ואינו כולל שרת או מסד נתונים.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## הרצה מקומית
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+נדרשים Node.js ו־npm.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Vite יציג בטרמינל את הכתובת המקומית של האפליקציה.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## בדיקות ובניית גרסה
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm test
+npm run lint
+npm run build
 ```
+
+`npm test` מריץ את בדיקות Vitest. `npm run lint` בודק את הקוד, ו־`npm run build` מריץ בדיקת TypeScript ויוצר build לייצור.
+
+## תיעוד תהליך העבודה
+
+- [`PRD.md`](./PRD.md) — דרישות ותכולת הפרויקט.
+- [`tasks.md`](./tasks.md) — המשימות וקריטריוני הקבלה.
+- [`PROMPTS.md`](./PROMPTS.md) — פרומפטים מקצועיים והערות עבודה לפי שלבי הפיתוח.
