@@ -334,6 +334,29 @@
   background: #1b282e;
 }
 
+.image-fallback {
+  color: var(--muted);
+  background:
+    radial-gradient(ellipse at center, rgba(118, 231, 189, 0.08), transparent 65%),
+    #1b282e;
+}
+
+.character-image.image-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.image-fallback-symbol {
+  color: var(--mint);
+  font-size: 1.8rem;
+}
+
 .character-card-content {
   padding: 0.9rem 1rem 1rem;
 }
@@ -430,6 +453,17 @@
   min-height: 25rem;
   object-fit: cover;
   background: #1b282e;
+}
+
+.character-profile-image.image-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1.5rem;
+  color: var(--muted);
+  text-align: center;
 }
 
 .character-profile-content {
