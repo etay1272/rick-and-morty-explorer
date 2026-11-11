@@ -57,6 +57,20 @@ describe('Rick and Morty API client', () => {
     await expect(getEpisodesByIds([1])).resolves.toHaveLength(1)
   })
 
+  it('requests episodes by name and page', async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify({ info: { count: 1, pages: 1, next: null, prev: null }, results: [] })),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    await getEpisodePage({ name: ' Pilot ', page: 2 })
+
+    const requestUrl = new URL(String(fetchMock.mock.calls[0]?.[0]))
+    expect(requestUrl.pathname).toBe('/api/episode')
+    expect(requestUrl.searchParams.get('name')).toBe('Pilot')
+    expect(requestUrl.searchParams.get('page')).toBe('2')
+  })
+
   it('reports unsuccessful HTTP responses with their status code', async () => {
     const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
       new Response('Server error', { status: 503 }),
