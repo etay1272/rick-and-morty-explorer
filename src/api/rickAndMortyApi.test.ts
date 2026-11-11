@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { ApiRequestError, getCharacterById, getCharacterPage, getEpisodePage } from './rickAndMortyApi.ts'
+import { ApiRequestError, getCharacterById, getCharacterPage, getEpisodesByIds, getEpisodePage } from './rickAndMortyApi.ts'
 
 afterEach(() => {
   vi.unstubAllGlobals()
@@ -32,6 +32,29 @@ describe('Rick and Morty API client', () => {
     expect(String(fetchMock.mock.calls[0]?.[0])).toBe(
       'https://rickandmortyapi.com/api/character/42',
     )
+  })
+
+  it('requests multiple episode appearances in one API call', async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify([{ id: 1 }, { id: 2 }])),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const episodes = await getEpisodesByIds([1, 2])
+
+    expect(episodes).toHaveLength(2)
+    expect(String(fetchMock.mock.calls[0]?.[0])).toBe(
+      'https://rickandmortyapi.com/api/episode/1,2',
+    )
+  })
+
+  it('normalizes the API response for one episode into a list', async () => {
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+      new Response(JSON.stringify({ id: 1 })),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    await expect(getEpisodesByIds([1])).resolves.toHaveLength(1)
   })
 
   it('reports unsuccessful HTTP responses with their status code', async () => {

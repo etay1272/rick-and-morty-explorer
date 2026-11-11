@@ -63,6 +63,21 @@ export function getCharacterById(id: number): Promise<Character> {
   return fetchJson<Character>(new URL(`${API_BASE_URL}/character/${id}`))
 }
 
+export async function getEpisodesByIds(ids: number[]): Promise<Episode[]> {
+  if (ids.length === 0) return []
+
+  if (ids.some((id) => !Number.isSafeInteger(id) || id < 1)) {
+    throw new RangeError('Episode IDs must be positive safe integers.')
+  }
+
+  const resourceId = ids.join(',')
+  const result = await fetchJson<Episode | Episode[]>(
+    new URL(`${API_BASE_URL}/episode/${resourceId}`),
+  )
+
+  return Array.isArray(result) ? result : [result]
+}
+
 export function getEpisodePage(query: EpisodeQuery = {}): Promise<ApiPage<Episode>> {
   return fetchJson<ApiPage<Episode>>(createCollectionUrl('episode', query))
 }

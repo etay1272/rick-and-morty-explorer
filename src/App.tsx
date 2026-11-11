@@ -1,27 +1,10 @@
-import { Link, NavLink, Navigate, Route, Routes, useParams } from 'react-router-dom'
+import { Link, NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import CharacterListPage from './CharacterListPage.tsx'
-import { parseCharacterId } from './routes.ts'
+import CharacterDetailsPage from './CharacterDetailsPage.tsx'
 import './App.css'
 
 function CharactersPage() {
   return <CharacterListPage />
-}
-
-function CharacterDetailsPage() {
-  const { id } = useParams<{ id: string }>()
-  const characterId = parseCharacterId(id)
-
-  return (
-    <PagePlaceholder
-      eyebrow="Character file"
-      title="Character details"
-      description={
-        characterId === null
-          ? 'This character address has an invalid ID.'
-          : `Character ID: ${characterId}. Full details will be added in a later task.`
-      }
-    />
-  )
 }
 
 function FavoritesPage() {
