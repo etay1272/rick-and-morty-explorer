@@ -5,6 +5,7 @@ import type { Character, Episode } from './types.ts'
 import { formatEpisodeCode } from './utils/episodes.ts'
 import { parseCharacterId } from './routes.ts'
 import { useFavorites } from './FavoritesContext.ts'
+import CharacterImage from './CharacterImage.tsx'
 
 function CharacterDetailsPage() {
   const { id } = useParams<{ id: string }>()
@@ -112,7 +113,12 @@ function CharacterDetailsPage() {
     <article className="character-details" aria-labelledby="character-name">
       <Link className="return-link details-back-link" to="/characters">← Back to characters</Link>
       <div className="character-profile">
-        <img className="character-profile-image" src={character.image} alt={character.name} />
+        <CharacterImage
+          className="character-profile-image"
+          src={character.image}
+          alt={character.name}
+          loading="eager"
+        />
         <div className="character-profile-content">
           <p className="page-eyebrow">Character file · #{character.id}</p>
           <h1 className="page-title" id="character-name">{character.name}</h1>
